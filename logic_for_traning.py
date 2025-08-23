@@ -7,8 +7,8 @@ def Training():
     path =  os.path.join(current_dir, 'words')
     all_files = os.listdir(path)
     list_of_files = []
-    for num, name in enumerate(all_files):
-        list_of_files.append(f'{num+1}: {name}')
+    for f_name in all_files:
+        list_of_files.append(f_name)
     return list_of_files
 
 

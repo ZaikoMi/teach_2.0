@@ -16,11 +16,13 @@ root.grid_columnconfigure(0, weight=1)
 # --- Создаём фреймы (страницы) ---
 # Каждый фрейм будет "страницей"
 main_frame = tk.Frame(root, bg="#f0f0f0")
+training_choose_frame = tk.Frame(root, bg="#f0f0f0")
 training_frame = tk.Frame(root, bg="#f0f0f0")
 add_frame = tk.Frame(root, bg="#f0f0f0")
 
+
 # Размещаем все фреймы на том же месте (0,0), но виден будет только один
-for frame in (main_frame, training_frame, add_frame):
+for frame in (main_frame, training_choose_frame, add_frame):
     frame.grid(row=0, column=0, sticky="nsew")
 
 
@@ -41,7 +43,7 @@ tk.Button(
     main_frame,
     text="Training / 任务型练习",
     **button_config,
-    command=lambda: show_frame(training_frame)
+    command=lambda: show_frame(training_choose_frame)
 ).pack(pady=30, padx=100, fill=tk.X)
 
 tk.Button(
@@ -53,21 +55,22 @@ tk.Button(
 
 
 # === 2. Страница "Training" ===
-tk.Label(training_frame, text="Select a training type", font=("Arial", 24), bg="#f0f0f0").pack(pady=20)
-tk.Label(training_frame, text="选择训练类型", font=("Arial", 18), bg="#f0f0f0").pack(pady=10)
-my_list_of_liles = Training()
+tk.Label(training_choose_frame, text="Select a training type", font=("Arial", 24), bg="#f0f0f0").pack(pady=20)
+tk.Label(training_choose_frame, text="选择训练类型", font=("Arial", 18), bg="#f0f0f0").pack(pady=10)
+my_list_of_files = Training()
 
-for i in my_list_of_liles:
+for file in my_list_of_files:
     tk.Button(
-        training_frame,
-        text=i,
+        training_choose_frame,
+        text=file,
         **button_config_x,
+        command= lambda f=file: print(f'open {f}')
     ).pack(pady=10, padx=80, fill=tk.X)
 
 
 # Кнопка "Назад"
 tk.Button(
-    training_frame,
+    training_choose_frame,
     text="Back / 返回",
     **back_button_config,
     command=lambda: show_frame(main_frame)
