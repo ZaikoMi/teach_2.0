@@ -11,7 +11,7 @@ from voice_acting import play_chinese_text
 from text_auto_editing import create_responsive_label
 
 my_word_class = None
-
+long = '______________________________'
 # Инициализация pygame для проигрывания
 pygame.mixer.init()
 
@@ -91,6 +91,8 @@ def making_training_page(name_of_file, new = True):
     tk.Label(training_frame, text=my_word_class.answer_hanzi, font=("Arial", 160), bg="#f0f0f0").pack(pady=(30,5))
     tk.Label(training_frame, text=my_word_class.answer_pinin, font=("Arial", 20), bg="#f0f0f0").pack(pady=(5, 10))
     my_word_class.inf_for_training_frame()
+    # Горизонтальная линия (разделитель)
+    tk.Label(training_frame, text=long * 2, font=("Arial", 30), bg="#f0f0f0").pack(pady=(30, 5))
     create_responsive_label(training_frame,my_word_class.question)
 
 
@@ -100,7 +102,7 @@ def making_training_page(name_of_file, new = True):
         text="Обновить",
         **button_config_x,
         command=lambda f=file: making_training_page(f, new = False)
-    ).pack(pady=15, padx=100, fill=tk.X)
+    ).pack(pady=(0,5), padx=100, fill=tk.X)
     show_frame(training_frame)
 
     tk.Button(
@@ -108,7 +110,7 @@ def making_training_page(name_of_file, new = True):
         text="Back",
         **button_config_x,
         command=lambda: show_frame(training_choose_frame)
-    ).pack(pady=30, padx=100, fill=tk.X)
+    ).pack(pady=(0,10), padx=100, fill=tk.X)
 
     # === Хоткеи ===
     training_frame.focus_set()  # позволяет ловить события клавиш

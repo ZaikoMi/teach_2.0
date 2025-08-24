@@ -20,7 +20,7 @@ def create_responsive_label(parent, text):
         if event.width <= 50 or event.height <= 50:  # защита от мусора
             return
         label.config(wraplength=event.width - 40)
-        new_size = int(min(event.width, event.height) / 15)
+        new_size = int(min(event.width, event.height) / 20)
         new_size = max(12, min(new_size, 120))
         current_font.config(size=new_size)
 
