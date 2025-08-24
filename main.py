@@ -1,7 +1,10 @@
 # main.py
 import tkinter as tk
 from b_conf import *
-from logic_for_traning import *
+from logic_for_training import *
+
+my_word_class = None
+
 
 # === Главное окно ===
 root = tk.Tk()
@@ -55,9 +58,23 @@ tk.Button(
 
 
 # === 2. Страница "Training" ===
+tk.Label(training_frame, text="Select a training type", font=("Arial", 24), bg="#f0f0f0").pack(pady=20)
+tk.Label(training_frame, text="选择训练类型", font=("Arial", 18), bg="#f0f0f0").pack(pady=10)
+my_list_of_files = training()
+
+for file in my_list_of_files:
+    tk.Button(
+        training_choose_frame,
+        text=file,
+        **button_config_x,
+        command= lambda f=file: print(f'open {f}')
+    ).pack(pady=10, padx=80, fill=tk.X)
+
+# === 2.1 Страница "Training" ===
+
 tk.Label(training_choose_frame, text="Select a training type", font=("Arial", 24), bg="#f0f0f0").pack(pady=20)
 tk.Label(training_choose_frame, text="选择训练类型", font=("Arial", 18), bg="#f0f0f0").pack(pady=10)
-my_list_of_files = Training()
+my_list_of_files = training()
 
 for file in my_list_of_files:
     tk.Button(
@@ -81,19 +98,6 @@ tk.Button(
 tk.Label(add_frame, text="Add new exercise or word", font=("Arial", 24), bg="#f0f0f0").pack(pady=20)
 tk.Label(add_frame, text="添加新的练习或单词", font=("Arial", 18), bg="#f0f0f0").pack(pady=10)
 
-tk.Button(
-    add_frame,
-    text="Add Word / 添加单词",
-    **button_config,
-    command=lambda: print("Adding new word...")
-).pack(pady=20, padx=80, fill=tk.X)
-
-tk.Button(
-    add_frame,
-    text="Add Sentence / 添加句子",
-    **button_config2,
-    command=lambda: print("Adding new sentence...")
-).pack(pady=20, padx=80, fill=tk.X)
 
 tk.Button(
     add_frame,
@@ -101,6 +105,9 @@ tk.Button(
     **back_button_config,
     command=lambda: show_frame(main_frame)
 ).pack(pady=40)
+
+
+
 
 
 # === Запуск: показываем сначала главную страницу ===
