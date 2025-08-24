@@ -8,8 +8,8 @@ def get_path():
     return os.path.dirname(__file__)
 
 def training():
-    current_dir = get_path()
-    path =  os.path.join(current_dir, 'words')
+
+    path =  os.path.join(get_path(), 'words')
     all_files = os.listdir(path)
     list_of_files = []
     for f_name in all_files:
@@ -21,7 +21,8 @@ class Voc:
         self.path = os.path.join(get_path(), 'words', name)
         self.list_of_words = self.make_list_of_words()
         self.question = " "
-        self.answer = " "
+        self.answer_hanzi = ''
+        self.answer_pinin = ''
 
 
     def make_list_of_words(self):
@@ -36,7 +37,9 @@ class Voc:
     def inf_for_training_frame(self):
         rand_task =choice(self.list_of_words).split('/')
         self.question = rand_task[0]
-        self.answer = rand_task[1]
+        full_answer = rand_task[1].split(maxsplit=1)
+        self.answer_hanzi = full_answer[0]
+        self.answer_pinin = full_answer[1]
 
 
 
