@@ -179,6 +179,8 @@ def on_ok_click():
     new_file_name = name
     show_frame(fill_file_frame)
 
+
+
 # Кнопка ОК
 tk.Button(
     button_frame,
@@ -196,10 +198,14 @@ tk.Button(
 ).pack(padx=15)
 
 
-# === 4. Окно: ввод названия файла ===
+# === 4. Окно: ввода слов ===
 fill_file_frame = tk.Frame(root, bg="#f0f0f0")
 fill_file_frame.grid(row=0, column=0, sticky="nsew")
+# === Хоткеи ===
+fill_file_frame.focus_set()  # позволяет ловить события клавиш
 
+    # Сохраняем ссылки на биндинги, чтобы GC не удалил
+fill_file_frame.bindings = ["<space>", "<Escape>", "<Return>"]
 # Заголовок
 tk.Label(
     fill_file_frame,
@@ -253,16 +259,13 @@ fill_translation = tk.Entry(
 )
 fill_translation.pack(pady=10, ipady=5)
 
-# Кнопки
-button_frame = tk.Frame(fill_file_frame, bg="#f0f0f0")
-button_frame.pack(pady=(10,30))
 
 def on_ok_click():
     hanzi_name = fill_hanzi.get().strip()
     pinin_name = fill_pinin.get().strip()
     translstion_name = fill_translation.get().strip()
     if not hanzi_name or not pinin_name or not translstion_name:
-        print("Имя файла не может быть пустым")
+        print("Поле не может быть пустым")
         return
 
 
@@ -273,13 +276,18 @@ def on_ok_click():
     fill_pinin.delete(0, tk.END)  # очистить поле
     fill_translation.delete(0, tk.END)  # очистить поле
 
+
+# Кнопки
+button_frame = tk.Frame(fill_file_frame, bg="#f0f0f0")
+button_frame.pack(pady=(200,30))
+
 # Кнопка ОК
 tk.Button(
     button_frame,
     text="OK / Готово",
     **button_config_x,
     command=on_ok_click
-).pack(padx=15,pady=(180,25))
+).pack(padx=15,pady=(10,25))
 
 # Кнопка Назад
 tk.Button(
