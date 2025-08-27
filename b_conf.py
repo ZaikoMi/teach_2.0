@@ -39,3 +39,27 @@ button_config_x = {
     "cursor": "hand2",    # курсор в виде руки при наведении
     "activebackground": "#005A99",  # цвет при нажатии
 }
+
+button_mini_config = {
+    "font": ("Arial", 10),
+    "bg": "#4CAF50",      # синий цвет фона
+    "fg": "white",        # белый текст
+    "height": 2,
+    "width": 2,
+    "borderwidth": 0,
+    "relief": "flat",
+    "cursor": "hand2",    # курсор в виде руки при наведении
+    "activebackground": "#005A99",  # цвет при нажатии
+}
+
+button_play_hanzi_config = {
+    "font": ("Arial", 10),
+    "bg": "#4CAF50",      # синий цвет фона
+    "fg": "white",        # белый текст
+    "height": 2,
+    "width": 30,
+    "borderwidth": 0,
+    "relief": "flat",
+    "cursor": "hand2",    # курсор в виде руки при наведении
+    "activebackground": "#005A99",  # цвет при нажатии
+}

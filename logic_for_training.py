@@ -1,5 +1,4 @@
-from collections.abc import list_iterator
-from random import choice, random
+from random import choice
 import os, os.path
 
 
@@ -20,8 +19,10 @@ class Voc:
     def __init__(self, name):
         self.path = os.path.join(get_path(), 'words', name)
         self.list_of_words = self.make_list_of_words()
-        self.question = " "
+        self.question = None
+        self.previous_question = None
         self.answer_hanzi = ''
+        self.previous_hanzi = " "
         self.answer_pinin = ''
 
 
@@ -35,9 +36,11 @@ class Voc:
         return self.list_of_words
 
     def inf_for_training_frame(self):
+        self.previous_question = self.question
+        self.previous_hanzi = self.answer_hanzi
         rand_task =choice(self.list_of_words).split('/')
-        self.question = rand_task[0]
         full_answer = rand_task[1].split(maxsplit=1)
+        self.question = rand_task[0]
         self.answer_hanzi = full_answer[0]
         self.answer_pinin = full_answer[1]
 
