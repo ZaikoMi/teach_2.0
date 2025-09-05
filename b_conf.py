@@ -53,7 +53,7 @@ button_mini_config = {
 }
 
 button_play_hanzi_config = {
-    "font": ("Arial", 10),
+    "font": ("Arial", 15),
     "bg": "#4CAF50",      # синий цвет фона
     "fg": "white",        # белый текст
     "height": 2,

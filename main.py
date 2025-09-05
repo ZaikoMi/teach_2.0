@@ -22,6 +22,8 @@ root.configure(bg="#f0f0f0")
 root.grid_rowconfigure(0, weight=1)
 root.grid_columnconfigure(0, weight=1)
 
+
+
 # --- Создаём фреймы (страницы) ---
 main_frame = tk.Frame(root, bg="#f0f0f0")
 training_choose_frame = tk.Frame(root, bg="#f0f0f0")
@@ -78,9 +80,9 @@ def making_training_page(name_of_file, new = True):
         play_chinese_text(my_word_class.answer_hanzi)
     except:
         play_chinese_text("no audio file")
-    tk.Button(training_frame, text="O", **button_play_hanzi_config,
+    tk.Button(training_frame, text="🔊", **button_play_hanzi_config,
               command=lambda: play_chinese_text(my_word_class.previous_hanzi)).pack(padx=15, pady=(10, 25))
-    tk.Label(training_frame, text=my_word_class.answer_hanzi, font=("NSimSun", 160), bg="#f0f0f0").pack(pady=(30,5))
+    tk.Label(training_frame, text=my_word_class.answer_hanzi, font=("SimHei", 160), bg="#f0f0f0").pack(pady=(30,5))
     tk.Label(training_frame, text=my_word_class.answer_pinin, font=("Arial", 20), bg="#f0f0f0").pack(pady=(5, 10))
     my_word_class.inf_for_training_frame()
     tk.Label(training_frame, text=my_word_class.previous_question, font=("Arial", 10), bg="#f0f0f0").pack(pady=(5, 0))
@@ -149,6 +151,7 @@ def on_ok_click():
         return
     new_file_name = name
     show_frame(fill_file_frame)
+    fill_hanzi.focus_set()
 
 
 
@@ -172,11 +175,8 @@ tk.Button(
 # === 4. Окно: ввода слов ===
 fill_file_frame = tk.Frame(root, bg="#f0f0f0")
 fill_file_frame.grid(row=0, column=0, sticky="nsew")
-# === Хоткеи ===
-fill_file_frame.focus_set()  # позволяет ловить события клавиш
 
-    # Сохраняем ссылки на биндинги, чтобы GC не удалил
-fill_file_frame.bindings = ["<space>", "<Escape>", "<Return>"]
+
 # Заголовок
 tk.Label(
     fill_file_frame,
