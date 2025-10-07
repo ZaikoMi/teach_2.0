@@ -39,17 +39,17 @@ class Voc:
         self.previous_question = self.question
         self.previous_hanzi = self.answer_hanzi
         rand_task =choice(self.list_of_words).split('/')
-        full_answer = rand_task[1].split(maxsplit=1)
         self.question = rand_task[0]
-        self.answer_hanzi = full_answer[0]
-        self.answer_pinin = full_answer[1]
+        self.answer_hanzi = rand_task[1]
+        self.answer_pinin = rand_task[2]
+
 
 
 
 # l = training()
-# a = Voc(l[0])
-# print(a.question)
-# print(a.answer)
-# a.inf_for_training_frame()
-# print(a.question)
-# print(a.answer)
+# a = Voc(l[7])
+# print(a.inf_for_training_frame())
+# # print(a.answer)
+# # a.inf_for_training_frame()
+# # print(a.question)
+# # print(a.answer)

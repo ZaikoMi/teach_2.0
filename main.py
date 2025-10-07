@@ -268,14 +268,6 @@ tk.Button(
     command=lambda: show_frame(main_frame)
 ).pack(padx=15)
 
-# show_frame(fill_file_frame)
-
-
-
-
-
-
-
 # === Запуск: показываем сначала главную страницу ===
 show_frame(main_frame)
 

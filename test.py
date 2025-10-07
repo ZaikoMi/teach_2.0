@@ -12,7 +12,7 @@ def save_tts(filename):
     tts.save(''.join(["audio2/", filename, ".mp3"]))
     print(f"Аудио сохранено: {filename}")
 
-l = Voc("new")
+l = Voc("new.txt")
 
 for i in l.list_of_words:
     w = i.split('/')
@@ -23,7 +23,7 @@ for i in l.list_of_words:
 # # save_tts('家')
 #
 # l_L = []
-# l = Voc("7. All of my")
+# l = Voc("7. All of my.txt")
 # for i in l.list_of_words:
 #     l_L.append(i.split('/')[0])
 # print(','.join(l_L))

@@ -2,7 +2,7 @@ from logic_for_training import training, Voc, get_path
 import os, os.path
 
 
-l = Voc("new")
+l = Voc("new.txt")
 
 for i in l.list_of_words:
     hanzi_name = i.split('/')[0]
